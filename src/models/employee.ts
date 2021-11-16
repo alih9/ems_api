@@ -12,7 +12,7 @@ interface EmployeeAttributes {
     Salary: number,
     Commission: number,
     ManagerId: number,
-    DepId: number,
+    DepartmentId: number,
     JobId: number
 }
 
@@ -27,7 +27,7 @@ module.exports = (sequelize:any, DataTypes:any) => {
     Salary!: number;
     Commission!: number;
     ManagerId!: number;
-    DepId!: number;
+    DepartmentId!: number;
     JobId!: number;
 
 
@@ -46,7 +46,7 @@ module.exports = (sequelize:any, DataTypes:any) => {
     Salary: DataTypes.INTEGER,
     Commission: DataTypes.INTEGER,
     ManagerId: DataTypes.INTEGER,
-    DepId: DataTypes.INTEGER,
+    DepartmentId: DataTypes.INTEGER,
     JobId: DataTypes.INTEGER
   }, {
     sequelize,
@@ -54,3 +54,4 @@ module.exports = (sequelize:any, DataTypes:any) => {
   });
   return Employee;
 };
+
