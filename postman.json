@@ -1,0 +1,380 @@
+{
+    "info": {
+      "_postman_id": "732fc997-1c9c-4ea4-84f2-42d8f67dccc6",
+      "name": "Tax",
+      "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Clients",
+        "item": [
+          {
+            "name": "Create Client",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"businessName\": \"My Business\",\n    \"focalPerson\": \"John Doe\",\n    \"address\": \"Somewhere in the world\",\n    \"phone\": \"0300999999\",\n    \"type\": \"Local\",\n    \"estimatedBill\": 50000,\n    \"pending\": 1000,\n    \"Payments\": [\n        {\n            \"type\": \"Cash\",\n            \"amount\": 40000,\n            \"dated\": \"2021-09-25\",\n            \"year\": \"2021\",\n            \"status\": true,\n            \"recieptNo\": \"\",\n            \"recievedFrom\": \"\",\n            \"chequeAccountNumber\": \"\"\n        },\n        {\n            \"type\": \"Cash\",\n            \"amount\": 10000,\n            \"dated\": \"2021-09-26\",\n            \"year\": \"2021\",\n            \"status\": true,\n            \"recieptNo\": \"\",\n            \"recievedFrom\": \"\",\n            \"chequeAccountNumber\": \"\"\n        }\n    ]\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": "http://localhost:4000/api/v1/clients"
+            },
+            "response": []
+          },
+          {
+            "name": "Get All Clients",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:4000/api/v1/clients?type=Company&search=",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "v1", "clients"],
+                "query": [
+                  {
+                    "key": "type",
+                    "value": "Company"
+                  },
+                  {
+                    "key": "search",
+                    "value": ""
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get Client",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": "http://localhost:4000/api/v1/clients/1"
+            },
+            "response": []
+          },
+          {
+            "name": "Update Client",
+            "request": {
+              "method": "PUT",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"businessName\": \"My Business2\",\n    \"focalPerson\": \"John Doe\",\n    \"address\": \"Somewhere in the world\",\n    \"phone\": \"0300999999\",\n    \"type\": \"Local\",\n    \"estimatedBill\": 50000,\n    \"pending\": 1000\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": "http://localhost:4000/api/v1/clients/1"
+            },
+            "response": []
+          },
+          {
+            "name": "Delete Client",
+            "request": {
+              "method": "DELETE",
+              "header": [],
+              "url": "http://localhost:4000/api/v1/clients/1"
+            },
+            "response": []
+          },
+          {
+            "name": "Create Client Payments",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "[\n    {\n        \"type\": \"Cash\",\n        \"amount\": 40000,\n        \"dated\": \"2021-09-25\",\n        \"year\": \"2021\",\n        \"status\": true,\n        \"recieptNo\": \"\",\n        \"recievedFrom\": \"\",\n        \"chequeAccountNumber\": \"\"\n    },\n    {\n        \"type\": \"Cash\",\n        \"amount\": 10000,\n        \"dated\": \"2021-09-26\",\n        \"year\": \"2021\",\n        \"status\": true,\n        \"recieptNo\": \"\",\n        \"recievedFrom\": \"\",\n        \"chequeAccountNumber\": \"\"\n    }\n]",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": "http://localhost:4000/api/v1/clients/9/payments"
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Payments",
+        "item": [
+          {
+            "name": "Get All Payments",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:4000/api/v1/payments?dateFrom=2021-09-23&dateTo=2021-09-28&status=Active&type=Cash,Direct%20Dept",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "v1", "payments"],
+                "query": [
+                  {
+                    "key": "dateFrom",
+                    "value": "2021-09-23"
+                  },
+                  {
+                    "key": "dateTo",
+                    "value": "2021-09-28"
+                  },
+                  {
+                    "key": "status",
+                    "value": "Active"
+                  },
+                  {
+                    "key": "type",
+                    "value": "Cash,Direct%20Dept"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Update Payment",
+            "request": {
+              "method": "PUT",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"type\": \"Online/Cheque\",\n    \"amount\": 30000,\n    \"dated\": \"2021-09-25T00:00:00.000Z\",\n    \"year\": 2021,\n    \"status\": false,\n    \"recieptNo\": \"\",\n    \"recievedFrom\": \"\",\n    \"chequeAccountNumber\": \"\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": "http://localhost:4000/api/v1/payments/5"
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Expenditures",
+        "item": [
+          {
+            "name": "Create Expenditure",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"title\": \"Fuel\",\n    \"type\": \"Field\",\n    \"amount\": 50000,\n    \"dated\": \"2021-09-25\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": "http://localhost:4000/api/v1/expenditures"
+            },
+            "response": []
+          },
+          {
+            "name": "Get All Expenditures",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": "http://localhost:4000/api/v1/expenditures"
+            },
+            "response": []
+          },
+          {
+            "name": "Get Expenditure",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": "http://localhost:4000/api/v1/expenditures/1"
+            },
+            "response": []
+          },
+          {
+            "name": "Update Expenditure",
+            "request": {
+              "method": "PUT",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"title\": \"Lunch\",\n    \"type\": \"Field\",\n    \"amount\": 50000,\n    \"dated\": \"2021-09-25\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": "http://localhost:4000/api/v1/expenditures/1"
+            },
+            "response": []
+          },
+          {
+            "name": "Delete Expenditure",
+            "request": {
+              "method": "DELETE",
+              "header": [],
+              "url": "http://localhost:4000/api/v1/expenditures/1"
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Loan",
+        "item": [
+          {
+            "name": "Create Loan",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"title\": \"Someone\",\n    \"type\": \"Taken\",\n    \"amount\": 50000,\n    \"dated\": \"2021-09-25\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": "http://localhost:4000/api/v1/loan"
+            },
+            "response": []
+          },
+          {
+            "name": "Get All Loan",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": "http://localhost:4000/api/v1/loan"
+            },
+            "response": []
+          },
+          {
+            "name": "Get Loan",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": "http://localhost:4000/api/v1/loan/1"
+            },
+            "response": []
+          },
+          {
+            "name": "Update Loan",
+            "request": {
+              "method": "PUT",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"title\": \"Someone\",\n    \"type\": \"Return\",\n    \"amount\": 50000,\n    \"dated\": \"2021-09-25\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": "http://localhost:4000/api/v1/loan/1"
+            },
+            "response": []
+          },
+          {
+            "name": "Delete Loan",
+            "request": {
+              "method": "DELETE",
+              "header": [],
+              "url": "http://localhost:4000/api/v1/loan/1"
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Installments",
+        "item": [
+          {
+            "name": "Create Installment",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"title\": \"Someone\",\n    \"type\": \"Taken\",\n    \"amount\": 50000,\n    \"dated\": \"2021-09-25\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": "http://localhost:4000/api/v1/loan"
+            },
+            "response": []
+          },
+          {
+            "name": "Get All Installments",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": "http://localhost:4000/api/v1/installments"
+            },
+            "response": []
+          },
+          {
+            "name": "Get Installment",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": "http://localhost:4000/api/v1/installments/1"
+            },
+            "response": []
+          },
+          {
+            "name": "Update Installment",
+            "request": {
+              "method": "PUT",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"recieptNo\": \"\",\n    \"status\": true\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": "http://localhost:4000/api/v1/installments/1"
+            },
+            "response": []
+          },
+          {
+            "name": "Delete Installment",
+            "request": {
+              "method": "DELETE",
+              "header": [],
+              "url": "http://localhost:4000/api/v1/installments/1"
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Index",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": "http://localhost:4000/api/v1"
+        },
+        "response": []
+      }
+    ]
+  }

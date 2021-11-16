@@ -1,0 +1,1 @@
+{"version":3,"file":"20211112101720-TablesAssociations.js","sourceRoot":"","sources":["../../src/migrations/20211112101720-TablesAssociations.js"],"names":[],"mappings":"AAAA,YAAY,CAAC;;;;;;;;;;AAEb,MAAM,CAAC,OAAO,GAAG;IACf,EAAE,EAAE,CAAO,cAAc,EAAE,SAAS,EAAE,EAAE;QAGtC;;;;;WAKG;IACL,CAAC,CAAA;IAED,IAAI,EAAE,CAAO,cAAc,EAAE,SAAS,EAAE,EAAE;QACxC;;;;;WAKG;IACL,CAAC,CAAA;CACF,CAAC"}
