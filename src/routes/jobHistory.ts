@@ -1,5 +1,5 @@
 import express, {Request,Response} from 'express';
-const { JobHistory,Department ,Job} = require("../models");
+const { JobHistory,Department ,Job,Employee} = require("../models");
 const router = express.Router();
 
 
@@ -20,7 +20,10 @@ router.get("/", async function (req:Request, res:Response) {
   try {
     const employees = await JobHistory.findAll({
         include: [
+          
           {
+            model: Employee
+          },{
             model: Department
           },
           {
@@ -41,12 +44,15 @@ router.get("/:id", async function (req:Request, res:Response) {
     const employee = await JobHistory.findOne({
       where: { id },
       include: [
+        
         {
+          model: Employee
+        },{
           model: Department
         },
         {
           model: Job
-        }
+        } 
       ],
     });
     if (!employee) {
