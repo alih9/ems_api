@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const { Department } = require("../models");
 const router = express_1.default.Router();
-const { Op, fn, col } = require("sequelize");
 // Create Department
 router.post("/", function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -25,7 +24,19 @@ router.post("/", function (req, res) {
             res.status(201).json({ success: true, data: department });
         }
         catch (error) {
-            res.status(500).json({ success: false, message: "Something went wrong!" });
+            res.status(500).json({ success: false, message: `Something went wrong! ${error}` });
+        }
+    });
+});
+// Get all Departments
+router.get("/", function (req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const employees = yield Department.findAll({});
+            res.status(200).json({ success: true, data: employees });
+        }
+        catch (error) {
+            res.status(500).json({ success: false, message: `Something went wrong! ${error}` });
         }
     });
 });
@@ -45,7 +56,7 @@ router.get("/:id", function (req, res) {
             res.status(200).json({ success: true, data: department });
         }
         catch (error) {
-            res.status(500).json({ success: false, message: "Something went wrong!" });
+            res.status(500).json({ success: false, message: `Something went wrong! ${error}` });
         }
     });
 });
@@ -65,7 +76,7 @@ router.put("/:id", function (req, res) {
             res.status(200).json({ success: true, data: department });
         }
         catch (error) {
-            res.status(500).json({ success: false, message: "Something went wrong!" });
+            res.status(500).json({ success: false, message: `Something went wrong! ${error}` });
         }
     });
 });
@@ -86,7 +97,7 @@ router.delete("/:id", function (req, res) {
                 .json({ success: true, message: "Department deleted successfully!" });
         }
         catch (error) {
-            res.status(500).json({ success: false, message: "Something went wrong!" });
+            res.status(500).json({ success: false, message: `Something went wrong! ${error}` });
         }
     });
 });

@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         Salary: DataTypes.INTEGER,
         Commission: DataTypes.INTEGER,
         ManagerId: DataTypes.INTEGER,
-        DepId: DataTypes.INTEGER,
+        DepartmentId: DataTypes.INTEGER,
         JobId: DataTypes.INTEGER
     }, {
         sequelize,
