@@ -1,7 +1,6 @@
 import express, {Request,Response} from 'express';
 const { Department } = require("../models");
 const router = express.Router();
-const { Op, fn, col } = require("sequelize");
 
 
 
@@ -13,7 +12,17 @@ router.post("/", async function (req:Request, res:Response) {
     const department = await Department.create(payload);
     res.status(201).json({ success: true, data: department });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Something went wrong!" });
+    res.status(500).json({ success: false, message: `Something went wrong! ${error}` });
+  }
+});
+// Get all Departments
+router.get("/", async function (req:Request, res:Response) {
+  try {
+    const employees = await Department.findAll({});
+
+    res.status(200).json({ success: true, data: employees });
+  } catch (error) {
+    res.status(500).json({ success: false, message: `Something went wrong! ${error}` });
   }
 });
 
@@ -31,7 +40,7 @@ router.get("/:id", async function (req:Request, res:Response) {
     }
     res.status(200).json({ success: true, data: department });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Something went wrong!" });
+    res.status(500).json({ success: false, message: `Something went wrong! ${error}` });
   }
 });
 
@@ -49,7 +58,7 @@ router.put("/:id", async function (req:Request, res:Response) {
     await department.update(payload);
     res.status(200).json({ success: true, data: department });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Something went wrong!" });
+    res.status(500).json({ success: false, message: `Something went wrong! ${error}` });
   }
 });
 
@@ -69,7 +78,7 @@ router.delete("/:id", async function (req:Request, res:Response) {
       .status(200)
       .json({ success: true, message: "Department deleted successfully!" });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Something went wrong!" });
+    res.status(500).json({ success: false, message: `Something went wrong! ${error}` });
   }
 });
 

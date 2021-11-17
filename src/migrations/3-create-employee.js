@@ -1,27 +1,42 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('JobHistories', {
+    await queryInterface.createTable('Employees', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      EmpId: {
+      Name: {
+        type: Sequelize.STRING
+      },
+      email: {
+        type: Sequelize.STRING
+      },
+      Phone: {
+        type: Sequelize.STRING
+      },
+      HireDate: {
+        type: Sequelize.DATE
+      },
+      Salary: {
+        type: Sequelize.INTEGER
+      },
+      Commission: {
+        type: Sequelize.INTEGER
+      },
+      ManagerId: {
+        type: Sequelize.INTEGER
+      },
+      DepartmentId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         onDelete: "CASCADE",
         references: {
-          model: "Employees",
+          model: "Departments",
           key: "id",
         }
-      },
-      StartDate: {
-        type: Sequelize.DATE
-      },
-      EndDate: {
-        type: Sequelize.DATE
       },
       JobId: {
         allowNull: false,
@@ -31,16 +46,7 @@ module.exports = {
           model: "Jobs",
           key: "id",
         }
-      },
-      DepId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        onDelete: "CASCADE",
-        references: {
-          model: "Departments",
-          key: "id",
-        }
-      },
+            },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -52,6 +58,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('JobHistories');
+    await queryInterface.dropTable('Employees');
   }
 };

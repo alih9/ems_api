@@ -6,11 +6,11 @@ import {
 
 
     interface JobHistoryAttributes {
-    EmpID: number,
+    EmployeeId: number,
     StartDate: Date,
     EndDate: Date,
     JobId: number,
-    DepId: number,  
+    DepartmentId: number,  
     }
     
     
@@ -18,11 +18,11 @@ import {
       class JobHistory extends Model<JobHistoryAttributes> 
       implements JobHistoryAttributes {
       
-        EmpID!: number;
+        EmployeeId!: number;
         StartDate!: Date;
         EndDate!: Date;
         JobId!: number;
-        DepId!: number;        
+        DepartmentId!: number;        
 
 
     static associate(models:any) {
@@ -33,14 +33,18 @@ import {
     }
   }
   JobHistory.init({
-    EmpID: DataTypes.INTEGER,
+    EmployeeId: DataTypes.INTEGER,
     StartDate: DataTypes.DATE,
     EndDate: DataTypes.DATE,
     JobId: DataTypes.INTEGER,
-    DepId: DataTypes.INTEGER
+    DepartmentId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'JobHistory',
   });
   return JobHistory;
 };
+
+
+
+   
