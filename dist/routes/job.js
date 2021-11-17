@@ -13,35 +13,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const { Employee, Department, Job } = require("../models");
+const { Job } = require("../models");
 const router = express_1.default.Router();
-// Create Employee
+// Create Job
 router.post("/", function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const payload = req.body;
-            const employee = yield Employee.create(payload);
-            res.status(201).json({ success: true, data: employee });
+            const job = yield Job.create(payload);
+            res.status(201).json({ success: true, data: job });
         }
         catch (error) {
-            res.status(500).json({ success: false, message: `Something went wrong! ${error}` });
+            res.status(500).json({ success: false, message: "Something went wrong!" });
         }
     });
 });
-// Get all Employees
+// Get all Jobs
 router.get("/", function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const employees = yield Employee.findAll({
-                include: [
-                    {
-                        model: Department
-                    },
-                    {
-                        model: Job
-                    }
-                ],
-            });
+            const employees = yield Job.findAll({});
             res.status(200).json({ success: true, data: employees });
         }
         catch (error) {
@@ -49,69 +40,61 @@ router.get("/", function (req, res) {
         }
     });
 });
-// Get Employee by ID
+// Get Job by ID
 router.get("/:id", function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const id = req.params.id;
-            const employee = yield Employee.findOne({
+            const job = yield Job.findOne({
                 where: { id },
-                include: [
-                    {
-                        model: Department
-                    },
-                    {
-                        model: Job
-                    }
-                ],
             });
-            if (!employee) {
+            if (!job) {
                 return res
                     .status(404)
-                    .json({ success: false, message: "Employee not found!" });
+                    .json({ success: false, message: "Job not found!" });
             }
-            res.status(200).json({ success: true, data: employee });
+            res.status(200).json({ success: true, data: job });
         }
         catch (error) {
             res.status(500).json({ success: false, message: "Something went wrong!" });
         }
     });
 });
-// Update Employee
+// Update Job
 router.put("/:id", function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const id = req.params.id;
             const payload = req.body;
-            const employee = yield Employee.findOne({ where: { id } });
-            if (!employee) {
+            const job = yield Job.findOne({ where: { id } });
+            if (!job) {
                 return res
                     .status(404)
-                    .json({ success: false, message: "Employee not found!" });
+                    .json({ success: false, message: "Job not found!" });
             }
-            yield employee.update(payload);
-            res.status(200).json({ success: true, data: employee });
+            yield job.update(payload);
+            res.status(200).json({ success: true, data: job });
         }
         catch (error) {
             res.status(500).json({ success: false, message: "Something went wrong!" });
         }
     });
 });
-// Delete Employee
+// Delete Job
 router.delete("/:id", function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const id = req.params.id;
-            const employee = yield Employee.findOne({ where: { id } });
-            if (!employee) {
+            const job = yield Job.findOne({ where: { id } });
+            if (!job) {
                 return res
                     .status(404)
-                    .json({ success: false, message: "Employee not found!" });
+                    .json({ success: false, message: "Job not found!" });
             }
-            yield employee.destroy();
+            yield job.destroy();
             res
                 .status(200)
-                .json({ success: true, message: "Employee deleted successfully!" });
+                .json({ success: true, message: "Job deleted successfully!" });
         }
         catch (error) {
             res.status(500).json({ success: false, message: "Something went wrong!" });
@@ -119,4 +102,4 @@ router.delete("/:id", function (req, res) {
     });
 });
 module.exports = router;
-//# sourceMappingURL=employee.js.map
+//# sourceMappingURL=job.js.map

@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
     JobHistory.init({
-        EmpID: DataTypes.INTEGER,
+        EmployeeId: DataTypes.INTEGER,
         StartDate: DataTypes.DATE,
         EndDate: DataTypes.DATE,
         JobId: DataTypes.INTEGER,
-        DepId: DataTypes.INTEGER
+        DepartmentId: DataTypes.INTEGER
     }, {
         sequelize,
         modelName: 'JobHistory',

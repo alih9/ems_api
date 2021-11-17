@@ -10,51 +10,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 module.exports = {
     up: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
-        yield queryInterface.createTable('Employees', {
+        yield queryInterface.createTable('Jobs', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            Name: {
+            Title: {
                 type: Sequelize.STRING
             },
-            email: {
-                type: Sequelize.STRING
-            },
-            Phone: {
-                type: Sequelize.STRING
-            },
-            HireDate: {
-                type: Sequelize.DATE
-            },
-            Salary: {
+            MinSalary: {
                 type: Sequelize.INTEGER
             },
-            Commission: {
+            MaxSalary: {
                 type: Sequelize.INTEGER
-            },
-            ManagerId: {
-                type: Sequelize.INTEGER
-            },
-            DepId: {
-                allowNull: false,
-                type: Sequelize.INTEGER,
-                onDelete: "CASCADE",
-                references: {
-                    model: "Departments",
-                    key: "id",
-                }
-            },
-            JobId: {
-                allowNull: false,
-                type: Sequelize.INTEGER,
-                onDelete: "CASCADE",
-                references: {
-                    model: "Jobs",
-                    key: "id",
-                }
             },
             createdAt: {
                 allowNull: false,
@@ -67,7 +37,7 @@ module.exports = {
         });
     }),
     down: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
-        yield queryInterface.dropTable('Employees');
+        yield queryInterface.dropTable('Jobs');
     })
 };
-//# sourceMappingURL=1-create-employee.js.map
+//# sourceMappingURL=2-create-job.js.map

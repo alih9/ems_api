@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 module.exports = {
     up: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
-        yield queryInterface.createTable('Departments', {
+        yield queryInterface.createTable('Employees', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
@@ -20,11 +20,41 @@ module.exports = {
             Name: {
                 type: Sequelize.STRING
             },
-            MangerId: {
+            email: {
+                type: Sequelize.STRING
+            },
+            Phone: {
+                type: Sequelize.STRING
+            },
+            HireDate: {
+                type: Sequelize.DATE
+            },
+            Salary: {
                 type: Sequelize.INTEGER
             },
-            Location: {
-                type: Sequelize.STRING
+            Commission: {
+                type: Sequelize.INTEGER
+            },
+            ManagerId: {
+                type: Sequelize.INTEGER
+            },
+            DepartmentId: {
+                allowNull: false,
+                type: Sequelize.INTEGER,
+                onDelete: "CASCADE",
+                references: {
+                    model: "Departments",
+                    key: "id",
+                }
+            },
+            JobId: {
+                allowNull: false,
+                type: Sequelize.INTEGER,
+                onDelete: "CASCADE",
+                references: {
+                    model: "Jobs",
+                    key: "id",
+                }
             },
             createdAt: {
                 allowNull: false,
@@ -37,7 +67,7 @@ module.exports = {
         });
     }),
     down: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
-        yield queryInterface.dropTable('Departments');
+        yield queryInterface.dropTable('Employees');
     })
 };
-//# sourceMappingURL=2-create-department.js.map
+//# sourceMappingURL=3-create-employee.js.map

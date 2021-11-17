@@ -17,7 +17,7 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            EmpId: {
+            EmployeeId: {
                 allowNull: false,
                 type: Sequelize.INTEGER,
                 onDelete: "CASCADE",
@@ -41,7 +41,7 @@ module.exports = {
                     key: "id",
                 }
             },
-            DepId: {
+            DepartmentId: {
                 allowNull: false,
                 type: Sequelize.INTEGER,
                 onDelete: "CASCADE",
@@ -64,4 +64,4 @@ module.exports = {
         yield queryInterface.dropTable('JobHistories');
     })
 };
-//# sourceMappingURL=20211112100717-create-job-history.js.map
+//# sourceMappingURL=4-create-job-history.js.map

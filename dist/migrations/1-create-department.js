@@ -10,21 +10,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 module.exports = {
     up: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
-        yield queryInterface.createTable('Jobs', {
+        yield queryInterface.createTable('Departments', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            Title: {
+            Name: {
                 type: Sequelize.STRING
             },
-            MinSalary: {
+            MangerId: {
                 type: Sequelize.INTEGER
             },
-            MaxSalary: {
-                type: Sequelize.INTEGER
+            Location: {
+                type: Sequelize.STRING
             },
             createdAt: {
                 allowNull: false,
@@ -37,7 +37,7 @@ module.exports = {
         });
     }),
     down: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
-        yield queryInterface.dropTable('Jobs');
+        yield queryInterface.dropTable('Departments');
     })
 };
-//# sourceMappingURL=20211112065051-create-job.js.map
+//# sourceMappingURL=1-create-department.js.map
